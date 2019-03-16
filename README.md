@@ -109,16 +109,16 @@ import {InjectGrpcClient} from "nestjs-grpc-client";
 import {ClientGrpcProxy} from "@nestjs/microservices";
 
 @Injectable()
-export class UserService {
+export class TestService {
 
   constructor(
     @InjectGrpcClient('hello') private grpcClient: ClientGrpcProxy,
   ) {
   }
 
-  async login(body) {
-    const userService: any = this.grpcClient.getService('UserService');
-    return await userService.login(body);
+  async hello() {
+    const helloService: any = this.grpcClient.getService('HelloService');
+    return await helloService.say('hello');
   }
 }
 
@@ -139,7 +139,7 @@ export class UserService {
   ) {
   }
 
-  async hello(body) {
+  async hello() {
     return await this.helloService.say('hello');
   }
 }

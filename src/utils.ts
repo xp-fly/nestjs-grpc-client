@@ -1,8 +1,4 @@
-import {GrpcOptions} from "@nestjs/common/interfaces/microservices/microservice-configuration.interface";
-import {Transport} from "@nestjs/common/enums/transport.enum";
-import {join} from "path";
-
-const TOKEN_PREFIX = 'GRPC_CLIENT_TOKEN_'
+import { TOKEN_PREFIX } from './constant';
 
 /**
  * 生成grpc客户端token
