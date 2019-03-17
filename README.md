@@ -1,6 +1,6 @@
 ## Description
 
-NestJs 的 grpc 客户端模块
+NestJs 的 grpc 客户端模块。nestjs自带的@Client() 需要传入rpc服务的地址，不能通过配置去注入这个地址。所以有了这个项目，可以注入远程服务的地址来生成 grpc 客户端
 
 ## Basic useage
 
