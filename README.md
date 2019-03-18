@@ -99,7 +99,7 @@ grpcOptions:
 
 - InjectGrpcClient(packageName: strint)  
   return ClientGrpcProxy。注入 grpc 客户端连接。全局，可以在任何地方使用，接受proto文件中定义的 package
-- InjectGrpcClientService(packageName: string, serviceName: string)
+- InjectGrpcClientService(packageName: string, serviceName: string)  
   返回proto中定一个的service。注入 grpc 中的service
 
 ```typescript
@@ -127,12 +127,24 @@ export class TestService {
 
 ```typescript
 
+import {Module} from "@nestjs/common";
+import {GrpcClientModule} from "nestjs-grpc-client";
+
+@Module({
+  imports: [GrpcClientModule.forClientServices([
+    {package: 'hello', services: ['HelloService']}
+  ])],
+})
+export class TestModule {
+}
+
+
 import {Injectable} from "@nestjs/common";
 import {InjectGrpcClientService} from "nestjs-grpc-client";
 import {ClientGrpcProxy} from "@nestjs/microservices";
 
 @Injectable()
-export class UserService {
+export class TestService {
 
   constructor(
     @InjectGrpcClientService('hello', 'HelloService') private helloService,
