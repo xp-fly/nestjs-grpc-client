@@ -4,11 +4,11 @@
 import { GrpcOptions } from '@nestjs/microservices';
 
 export interface GrpcOptionsOptions extends Pick<GrpcOptions, 'options'> {
-  url?: string;
+  url: string;
   maxSendMessageLength?: number;
   maxReceiveMessageLength?: number;
   credentials?: any;
-  protoPath: string;
+  protoPath?: string;
   package: string;
   protoLoader?: string;
 }
