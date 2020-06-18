@@ -3,15 +3,13 @@
  */
 import { GrpcOptions } from '@nestjs/microservices';
 
-export interface GrpcOptionsOptions extends Pick<GrpcOptions, 'options'> {
-  url: string;
-  maxSendMessageLength?: number;
-  maxReceiveMessageLength?: number;
-  credentials?: any;
-  protoPath?: string;
-  package: string;
-  protoLoader?: string;
-}
+export type PickType<T, U extends keyof T> = T[U];
+
+export type GrpcOptionsOptions = Pick<PickType<GrpcOptions, 'options'>,
+  'maxSendMessageLength' | 'maxReceiveMessageLength' | 'credentials' | 'package' | 'protoLoader'> & {
+    url: string,
+    protoPath?: string,
+  }
 
 export interface GrpcClientPackageServices {
   package: string; // 模块名
